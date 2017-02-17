@@ -1,4 +1,6 @@
 import express from 'express';
+import http from 'http';
+import socket from 'socket.io';
 import WebpackDevServer from 'webpack-dev-server';
 import webpack from 'webpack';
 
@@ -9,6 +11,8 @@ const React = require('react');
 const Router = require('react-router');
 
 const app = express();
+const server = http.Server(app);
+const io = socket(server);
 const port = 3000;
 const devPort = 3001;
 
@@ -118,6 +122,19 @@ app.get('/logout', function(req, res){
 require('./routes/router.js')(app); // pass our application into our routes
 
 
-const server = app.listen(port, () => {
-    console.log('Express listening on port', port);
+// const server = app.listen(port, () => {
+//     console.log('Express listening on port', port);
+// });
+
+server.listen(port);
+
+
+io.on('connection', function (socket) {
+  console.log('io connected!!!!!!');
+  socket.emit('sMessage', { hello: 'world' });
+  socket.on('cMessage', function (data) {
+    console.log(data);
+    socket.emit('sChatting', 'you sent me '+data);
+  });
+
 });

@@ -16,10 +16,26 @@ import Billbox from './billbox';
 import KaKao from './kakao';
 
 import ChatBox from './chatbox/ChatBox.js';
+import { socketConnect } from 'socket.io-react';
 
 
-export default class App extends React.Component {
-    
+class App extends React.Component {
+
+		constructor(props) {
+			super(props);
+			this.listenMessage.bind(this)();
+		}
+
+		sendMessage(){
+			this.props.socket.emit('cMessage', 'Hello Server! Im React Client');
+		}
+
+		listenMessage(){
+			this.props.socket.on('sChatting', function(data){
+				console.log(data);
+			});
+		}
+
     render() {
 
         return (
@@ -44,3 +60,5 @@ export default class App extends React.Component {
         )
     }
 }
+
+export default socketConnect(App);
