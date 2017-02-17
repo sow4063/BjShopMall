@@ -16,7 +16,7 @@ import { Router, Route, browserHistory, IndexRoute } from 'react-router';
 
 const socket = io.connect(process.env.SOCKET_URL);
 
-socket.on('sMessage', msg => console.log(msg));
+socket.on('sMdessage', msg => console.log(msg));
 
 //injectTapEventPlugin();
 
