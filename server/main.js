@@ -128,15 +128,30 @@ require('./routes/router.js')(app); // pass our application into our routes
 
 server.listen(port);
 
-
+// socket io default
 io.on('connection', function (socket) {
   console.log('io connected!!!!!!');
   socket.emit('connectMsg', 'We Are Connected!!');
-  socket.on('cMessage', function (msg) {
-    console.log(msg);
-    socket.emit('sChatting', msg); // 현재 연결된 socket 에만 send함
-    socket.broadcast.emit('sChatting', msg); // 서버에 연결된 모든 socket에 send함(자신 제외!)
+  socket.on('cMessage', function (resObj) {
+    console.log(resObj);
+    socket.emit('sChatting', resObj); // 현재 연결된 socket 에만 send함
+    socket.broadcast.emit('sChatting', resObj); // 서버에 연결된 모든 socket에 send함(자신 제외!)
     
   });
 
 });
+
+// socket io 'test' room
+// let testRoomIo = io.of('/test');
+// testRoomIo.on('connection', function(socket){
+  
+//   console.log('test Room io connected!!!!!!');
+//   socket.emit('connectMsg', '[Test Room] We Are Connected!!');
+//   socket.on('cMessage', function (msg) {
+//     console.log(msg);
+//     socket.emit('sChatting', msg); // 현재 연결된 socket 에만 send함
+//     socket.broadcast.emit('sChatting', msg); // 서버에 연결된 모든 socket에 send함(자신 제외!)
+    
+//   });
+
+// })

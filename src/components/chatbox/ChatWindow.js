@@ -22,22 +22,27 @@ const muiTheme = getMuiTheme({
   },
 });
 
-const style = {
+const paperStyle = {
   height: 200,
   width: '100%',
-  margin: 20,
-  textAlign: 'center',
   display: 'block',
+  overflow: 'scroll',
 };
 
-const PaperExampleSimple = () => (
+const PaperExampleSimple = (props) => (
 
   <MuiThemeProvider muiTheme={muiTheme}>
-    <div>
-      <Paper style={style} zDepth={1}>
-        <UserTitle></UserTitle>
+      <Paper style={paperStyle} zDepth={1}>
+        { props.conversation.map( (obj, i) => {
+
+            return (
+              <UserTitle isMyMsg={props.user === obj.user} conversation={obj} key={i}></UserTitle>
+            )
+        
+          } )
+        
+        }
       </Paper>
-    </div>
   </MuiThemeProvider>
 
 );

@@ -41,7 +41,7 @@ class App extends React.Component {
             <Billbox></Billbox>
             <h1>This is Bj Shop Mall</h1>
 						<SocketProvider socket={socket}>
-							<ChatBox />
+							<ChatBox user='chan'/>
 						</SocketProvider>	 
           </div>
 

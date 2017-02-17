@@ -25,40 +25,79 @@ const muiTheme = getMuiTheme({
   },
 });
 
-const style = {
-  margin: 5,
-  textAlign:'left'
+const listItemStyle = {
+  textAlign : 'right'
+}
+
+const avatarStyle = {
+  margin: 5
 };
 
-/**
- * Examples of `Avatar` using an image, [Font Icon](/#/components/font-icon), [SVG Icon](/#/components/svg-icon)
- * and "Letter" (string), with and without custom colors at the default size (`40dp`) and an alternate size (`30dp`).
- */
-const AvatarExampleSimple = () => (
-  <MuiThemeProvider muiTheme={muiTheme}>
-    <List>
+ 
 
-      <ListItem
-        disabled={true}
-        leftAvatar={
-          <Avatar
-            color={deepOrange300}
-            backgroundColor={purple500}
-            size={30}
-            style={style}
+
+const AvatarExampleSimple = (props) => {
+
+  if(props.isMyMsg){ // 내 매세지인 경우 오른쪽에 표시
+
+    return(
+      <MuiThemeProvider muiTheme={muiTheme}>
+        <List>
+
+          <ListItem
+            disabled={true}
+            rightAvatar={
+              <Avatar
+                color={deepOrange300}
+                backgroundColor={purple500}
+                size={30}
+                style={avatarStyle}
+
+              >
+                {props.conversation.user.substring(0,1)}
+              </Avatar>
+            }
+            style={listItemStyle}
           >
-            A
-          </Avatar>
-        }
-      >
-        Letter Avatar with custom colors and size
-      </ListItem>
-    
+            {props.conversation.user} : {props.conversation.message}
+          </ListItem>
+        
 
 
-    </List>
-  </MuiThemeProvider>
-);
+        </List>
+      </MuiThemeProvider>
+    )
+
+  }else{ // 내 메세지가 아닌경우 왼쪽에 표시
+
+    return(
+      <MuiThemeProvider muiTheme={muiTheme}>
+        <List>
+
+          <ListItem
+            disabled={true}
+            leftAvatar={
+              <Avatar
+                color={deepOrange300}
+                backgroundColor={purple500}
+                size={30}
+                style={avatarStyle}
+              >
+                {props.conversation.user.substring(0,1)}
+              </Avatar>
+            }
+          >
+            {props.conversation.user} : {props.conversation.message}
+          </ListItem>
+        
+
+
+        </List>
+      </MuiThemeProvider>
+    )
+  }
+  
+};
 
 export default AvatarExampleSimple;
 
