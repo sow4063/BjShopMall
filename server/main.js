@@ -131,10 +131,12 @@ server.listen(port);
 
 io.on('connection', function (socket) {
   console.log('io connected!!!!!!');
-  socket.emit('sMessage', { hello: 'world' });
-  socket.on('cMessage', function (data) {
-    console.log(data);
-    socket.emit('sChatting', 'you sent me '+data);
+  socket.emit('connectMsg', 'We Are Connected!!');
+  socket.on('cMessage', function (msg) {
+    console.log(msg);
+    socket.emit('sChatting', msg); // 현재 연결된 socket 에만 send함
+    socket.broadcast.emit('sChatting', msg); // 서버에 연결된 모든 socket에 send함(자신 제외!)
+    
   });
 
 });

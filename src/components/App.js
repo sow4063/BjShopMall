@@ -16,24 +16,19 @@ import Billbox from './billbox';
 import KaKao from './kakao';
 
 import ChatBox from './chatbox/ChatBox.js';
-import { socketConnect } from 'socket.io-react';
 
+
+//socket
+
+import { SocketProvider } from 'socket.io-react';
+import io from 'socket.io-client';
+const socket = io.connect(process.env.SOCKET_URL);
+			socket.on('connectMsg', msg => console.log(msg));
 
 class App extends React.Component {
 
 		constructor(props) {
 			super(props);
-			this.listenMessage.bind(this)();
-		}
-
-		sendMessage(){
-			this.props.socket.emit('cMessage', 'Hello Server! Im React Client');
-		}
-
-		listenMessage(){
-			this.props.socket.on('sChatting', function(data){
-				console.log(data);
-			});
 		}
 
     render() {
@@ -45,7 +40,9 @@ class App extends React.Component {
             <ProductLists></ProductLists>
             <Billbox></Billbox>
             <h1>This is Bj Shop Mall</h1>
-            <ChatBox></ChatBox>            
+						<SocketProvider socket={socket}>
+							<ChatBox />
+						</SocketProvider>	 
           </div>
 
         	<Router history={browserHistory}>
@@ -61,4 +58,6 @@ class App extends React.Component {
     }
 }
 
-export default socketConnect(App);
+export default App;
+
+
