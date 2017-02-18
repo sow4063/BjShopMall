@@ -5,7 +5,7 @@ export default class Join extends React.Component {
 	render() {
 		return (
 			<div>
-				회원가입
+				<h2>회원가입</h2>
 				<p><a href="/auth/facebook">facebook</a></p>
 				<form>
 					<p><label htmlFor="id">ID</label>

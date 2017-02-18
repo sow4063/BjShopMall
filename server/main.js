@@ -4,9 +4,9 @@ import webpack from 'webpack';
 
 const passport = require('passport');
 const FacebookStrategy = require('passport-facebook').Strategy;
+const LocalStrategy = require('passport-local').Strategy;
 const React = require('react');
 const Router = require('react-router');
-
 
 const app = express();
 const port = 3000;
@@ -69,6 +69,31 @@ passport.use(new FacebookStrategy({
 	users.push(newuser)
 	done(null, newuser)
 }));
+
+
+passport.use(new LocalStrategy(
+	function(username, password, done){
+		User.findOne({ username: username }, function(err, user){
+			if(err){
+				return done(err);
+			}
+			if(!user){
+				return done(null, false, { message: 'Incorrect username.'})
+			}
+			if(!user.validPassword(password)){
+				return done(null, false, { message: 'Incorrect password.'})
+			}
+
+			return done(null, user)
+		});
+	}
+));
+
+app.post('/auth/login', 
+	passport.authenticate('local', {	successRedirect: 'welcome',
+																		failureRedirect: '/',
+																		failureFlash: false }
+));
 
 
 app.get('/auth/facebook', 

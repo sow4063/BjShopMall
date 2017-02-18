@@ -6,7 +6,7 @@ export default class SellerLogin extends React.Component {
 	render() {
 		return (
 			<div>
-				판매자 로그인창입니다.
+				<h2>판매자 로그인창입니다.</h2>
 				<p><a href="/auth/facebook">facebook</a></p>
 				<form>
 					<p>
