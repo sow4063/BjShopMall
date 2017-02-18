@@ -94,37 +94,8 @@ passport.use(new LocalStrategy(
 	}
 ));
 
-app.post('/auth/login', 
-	passport.authenticate('local', {	successRedirect: 'welcome',
-																		failureRedirect: '/',
-																		failureFlash: false }
-));
-
-
-app.get('/auth/facebook', 
-	passport.authenticate('facebook')
-);
-
-app.get('/auth/facebook/callback', 
-	passport.authenticate('facebook', {
-		successRedirect: '/welcome',
-		failureRedirect: '/'
-	})
-);
-
-app.get('/logout', function(req, res){
-	req.logout();
-	res.redirect('/');
-})
-
-
 // routes ==================================================
 require('./routes/router.js')(app); // pass our application into our routes
-
-
-// const server = app.listen(port, () => {
-//     console.log('Express listening on port', port);
-// });
 
 server.listen(port);
 
@@ -141,17 +112,3 @@ io.on('connection', function (socket) {
 
 });
 
-// socket io 'test' room
-// let testRoomIo = io.of('/test');
-// testRoomIo.on('connection', function(socket){
-  
-//   console.log('test Room io connected!!!!!!');
-//   socket.emit('connectMsg', '[Test Room] We Are Connected!!');
-//   socket.on('cMessage', function (msg) {
-//     console.log(msg);
-//     socket.emit('sChatting', msg); // 현재 연결된 socket 에만 send함
-//     socket.broadcast.emit('sChatting', msg); // 서버에 연결된 모든 socket에 send함(자신 제외!)
-    
-//   });
-
-// })

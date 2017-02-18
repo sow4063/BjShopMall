@@ -38,7 +38,7 @@ ReactDOM.render(
 			<Route path="/sellerLogin" component={SellerLogin} />
 			<Route path="/buyerLogin" component={BuyerLogin} />
 			<Route path="/join" component={Join} />
-			<Route path="/broadcast/room" component={BroadCastRoom} />
+			<Route path="/broadcastroom" component={BroadCastRoom} />
 		</Route>
 		
 	</Router>

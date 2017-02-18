@@ -66,7 +66,7 @@ class ChatBox extends React.Component{
 					<h2>This is Chat Box!</h2>	
 					<ChatWindow user={this.state.user} conversation={this.state.conversation} ></ChatWindow>
 					<ChatInput sendMessage={this.sendMessage.bind(this)} changeMsgState={this.changeMsgState.bind(this)}></ChatInput>					
-					<input tpye="text" value={this.state.user} onChange={this.changeUserState.bind(this)}/>
+					<input type="text" value={this.state.user} onChange={this.changeUserState.bind(this)}/>
 				</div>
 		)
 
