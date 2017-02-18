@@ -1,16 +1,25 @@
 import React from 'react';
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import FlatButton from 'material-ui/FlatButton';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import {List, ListItem} from 'material-ui/List';
+import FlatButton from 'material-ui/FlatButton';
 import {grey900} from 'material-ui/styles/colors';
-import {Card, CardActions, CardHeader, CardText} from 'material-ui/Card';
-import Toggle from 'material-ui/Toggle';
-import Kakao from './kakao';
-import kakaopay from './kakaopay';
-import ProductLists from './ProductLists';
+import ContentInbox from 'material-ui/svg-icons/content/inbox';
+import ActionGrade from 'material-ui/svg-icons/action/grade';
+import ContentSend from 'material-ui/svg-icons/content/send';
+import ContentDrafts from 'material-ui/svg-icons/content/drafts';
+import Divider from 'material-ui/Divider';
+import ActionInfo from 'material-ui/svg-icons/action/info';
 
 const styles = {
-
+  propContainer: {
+    width: 200,
+    overflow: 'hidden',
+    margin: '20px auto 0',
+  },
+  propToggleHeader: {
+    margin: '20px auto 10px',
+  },
 };
 
 const muiTheme = getMuiTheme({
@@ -52,3 +61,4 @@ export default class Billbox extends React.Component {
     );
   }
 }
+

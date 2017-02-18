@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './components/App';
-import $ from 'jquery';
+import $ from 'jquery'
 
 let rootElement = document.getElementById('root');
 $("body").append($('<script src="https://code.jquery.com/jquery-1.12.4.min.js">'));

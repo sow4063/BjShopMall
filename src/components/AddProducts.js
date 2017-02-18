@@ -27,12 +27,10 @@ const styles = {
 const muiTheme = getMuiTheme({
   palette: {
     accent1Color: orange500, amber800
-
   },
 });
 
 class Addproducts extends Component {
-
   render() {
     return (
       <MuiThemeProvider muiTheme={muiTheme}>
