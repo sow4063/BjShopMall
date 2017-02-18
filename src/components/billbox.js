@@ -10,6 +10,9 @@ import ContentSend from 'material-ui/svg-icons/content/send';
 import ContentDrafts from 'material-ui/svg-icons/content/drafts';
 import Divider from 'material-ui/Divider';
 import ActionInfo from 'material-ui/svg-icons/action/info';
+import {Card, CardActions, CardHeader, CardText} from 'material-ui/Card';
+import kakaopay from './kakaopay';
+import Kakao from './kakao';
 
 const styles = {
   propContainer: {
@@ -61,4 +64,3 @@ export default class Billbox extends React.Component {
     );
   }
 }
-
