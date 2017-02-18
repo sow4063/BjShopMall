@@ -15,8 +15,12 @@
     "express": "^4.13.4",
     "mongoose": "^4.4",
     "q": "^1.4.1",
-    "react": "^15.0.2",
-    "react-dom": "^15.0.2"
+    "react": "^15.4.2",
+    "react-dom": "^15.4.2",
+    "react-facebook-login": "^3.4.3",
+    "iamport": "^0.3.4",
+    "importer": "^0.7.2",
+    "jquery": "^3.1.1" 
   },
   "devDependencies": {
     "babel-cli": "^6.9.0",
