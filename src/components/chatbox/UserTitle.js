@@ -25,6 +25,12 @@ const muiTheme = getMuiTheme({
   },
 });
 
+
+
+const listStyle = {
+  textAlign : 'right'
+}
+
 const listItemStyle = {
   textAlign : 'right'
 }
@@ -42,6 +48,7 @@ const AvatarExampleSimple = (props) => {
 
     return(
       <MuiThemeProvider muiTheme={muiTheme}>
+        
         <List>
 
           <ListItem
@@ -62,9 +69,8 @@ const AvatarExampleSimple = (props) => {
             {props.conversation.user} : {props.conversation.message}
           </ListItem>
         
-
-
         </List>
+
       </MuiThemeProvider>
     )
 

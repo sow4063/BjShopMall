@@ -17,9 +17,10 @@ import KaKao from './kakao';
 
 import ChatBox from './chatbox/ChatBox.js';
 
+// react router
+import { Link } from 'react-router'
 
 //socket
-
 import { SocketProvider } from 'socket.io-react';
 import io from 'socket.io-client';
 const socket = io.connect(process.env.SOCKET_URL);
@@ -34,11 +35,15 @@ class App extends React.Component {
     render() {
 
         return (
-
+        	
           <div>
             <Addproducts></Addproducts>
             <ProductLists></ProductLists>
             <Billbox></Billbox>
+
+
+						<ul><li><Link to="intro">Intro</Link></li><li><Link to="aaaaa">NotFound</Link></li></ul>
+            	{this.props.children}
             <h1>This is Bj Shop Mall</h1>
 						<SocketProvider socket={socket}>
 							<ChatBox user='chan'/>

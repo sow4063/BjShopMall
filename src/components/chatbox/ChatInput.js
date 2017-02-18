@@ -13,6 +13,17 @@ const muiTheme = getMuiTheme({
   },
 });
 
+const divStyle = {
+	width : '100%'
+}
+const textFieldStyle = {
+	width : '80%'
+}
+
+const chatSendBtnStyle = {
+	width: '20%'
+}
+
 class TextFieldExampleSimple extends React.Component {
 	
 	constructor(props) {
@@ -24,9 +35,9 @@ class TextFieldExampleSimple extends React.Component {
 		
 		return(
 			<MuiThemeProvider muiTheme={muiTheme}>
-			  <div>
-			    <TextField id="message" hintText="Hint Text" onChange={this.props.changeMsgState} />
-			    <ChatSendBtn sendMessage={this.props.sendMessage}></ChatSendBtn>
+			  <div style={divStyle}>
+			    <TextField id="message" hintText="Type Message" onChange={this.props.changeMsgState} style={textFieldStyle} />
+			    <ChatSendBtn sendMessage={this.props.sendMessage} style={chatSendBtnStyle}></ChatSendBtn>
 			  </div>
 		  </MuiThemeProvider>
 		);

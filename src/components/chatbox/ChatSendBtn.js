@@ -12,7 +12,7 @@ const muiTheme = getMuiTheme({
   },
 });
 
-const style = { margin: 12 };
+const buttonStyle = { margin: 12 };
 
 class RaisedButtonExampleSimple extends React.Component{
 
@@ -24,7 +24,7 @@ class RaisedButtonExampleSimple extends React.Component{
   render(){
     return(
       <MuiThemeProvider muiTheme={muiTheme}>  
-        <RaisedButton label="Primary" primary={true} style={style} onClick={this.props.sendMessage} />
+        <RaisedButton label="SEND" primary={true} style={buttonStyle} onClick={this.props.sendMessage} />
       </MuiThemeProvider>
     )
   }
