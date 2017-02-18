@@ -9,7 +9,6 @@ export default class Welcome extends React.Component {
         	
             <h1>welcome!!!!</h1>
             
-          
         )
     }
 }

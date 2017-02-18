@@ -1,15 +1,18 @@
 import React from 'react';
-<<<<<<< b65d6d3a38a28dfbfffdee0dbfef319a1795d7fd
+
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import Addproducts from './Addproducts';
 import ProductLists from './ProductLists';
 import Billbox from './billbox';
-=======
 import Home from './Home';
-import { Router, Route, hashHistory } from 'react-router';
+import { Router, Route, browserHistory } from 'react-router';
 import Facebook from './Facebook';
 import Welcome from './Welcome';
->>>>>>> bjshop
+
+import BuyerLogin from './BuyerLogin';
+import SellerLogin from './SellerLogin';
+import Join from './Join';
+
 
 export default class App extends React.Component {
     render() {
@@ -21,10 +24,13 @@ export default class App extends React.Component {
             <Billbox></Billbox>
           </div>
 
-        	<Router history={hashHistory}>
+        	<Router history={browserHistory}>
         		<Route path="/" component={Home}></Route>
         		<Route path="/auth/facebook" component={Facebook}></Route>
         		<Route path="/welcome" component={Welcome}></Route>
+        		<Route path="/sellerLogin" component={SellerLogin}></Route>
+        		<Route path="/buyerLogin" component={BuyerLogin}></Route>
+        		<Route path="/join" component={Join}></Route>
         	</Router>
         	
         )

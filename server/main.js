@@ -4,6 +4,9 @@ import webpack from 'webpack';
 
 const passport = require('passport');
 const FacebookStrategy = require('passport-facebook').Strategy;
+const React = require('react');
+const Router = require('react-router');
+
 
 const app = express();
 const port = 3000;
@@ -23,6 +26,25 @@ if(process.env.NODE_ENV == 'development') {
 
 app.use('/', express.static(__dirname + '/../public'));
 app.use(passport.initialize());
+app.use(passport.session());
+
+passport.serializeUser(function(user, done){
+	console.log('serializeUser', user);
+	done(null, user.authId)
+});
+
+
+var users = [];
+
+passport.deserializeUser(function(id, done){
+	console.log('deserializeUser1', id);
+	for(let i = 0; i < users.length; i++){
+		let user = users[i];
+		if(user.authId === id){
+			done(null, user)
+		}
+	}
+});
 
 passport.use(new FacebookStrategy({
 	clientID: '1846923295564989',
@@ -48,6 +70,7 @@ passport.use(new FacebookStrategy({
 	done(null, newuser)
 }));
 
+
 app.get('/auth/facebook', 
 	passport.authenticate('facebook')
 );
@@ -58,6 +81,12 @@ app.get('/auth/facebook/callback',
 		failureRedirect: '/'
 	})
 );
+
+app.get('/logout', function(req, res){
+	req.logout();
+	res.redirect('/');
+})
+
 
 // routes ==================================================
 require('./routes/router.js')(app); // pass our application into our routes
