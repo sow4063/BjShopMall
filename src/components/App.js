@@ -1,9 +1,5 @@
 import React from 'react';
 
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import Addproducts from './Addproducts';
-import ProductLists from './ProductLists';
-import Billbox from './billbox';
 import Home from './Home';
 import { Router, Route, browserHistory } from 'react-router';
 import Facebook from './Facebook';
@@ -12,11 +8,15 @@ import Welcome from './Welcome';
 import BuyerLogin from './BuyerLogin';
 import SellerLogin from './SellerLogin';
 import Join from './Join';
+
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import Addproducts from './Addproducts';
 import ProductLists from './ProductLists';
 import Billbox from './billbox';
 import KaKao from './kakao';
+
+import ChatBox from './chatbox/ChatBox.js';
+
 
 
 export default class App extends React.Component {
@@ -27,6 +27,8 @@ export default class App extends React.Component {
             <Addproducts></Addproducts>
             <ProductLists></ProductLists>
             <Billbox></Billbox>
+            <h1>This is Bj Shop Mall</h1>
+            <ChatBox></ChatBox>            
           </div>
 
         	<Router history={browserHistory}>
@@ -37,7 +39,7 @@ export default class App extends React.Component {
         		<Route path="/buyerLogin" component={BuyerLogin}></Route>
         		<Route path="/join" component={Join}></Route>
         	</Router>
-        	
+
         )
     }
 }
