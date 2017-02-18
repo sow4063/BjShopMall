@@ -127,8 +127,7 @@ export default class ProductLists extends React.Component {
               </TableRow>
               ))}
           </TableBody>
-        </Table>
-        
+        </Table> 
       </div>
        </MuiThemeProvider>
     );
