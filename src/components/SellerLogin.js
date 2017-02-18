@@ -22,6 +22,7 @@ export default class SellerLogin extends React.Component {
 
 				<p>
 					아직도 회원이 아니세요? 회원가입하세요!
+					<Link to="/broadcast/room">로그인</Link>
 					<Link to="/join"><button>회원가입</button></Link>
 				</p>
 				 	
